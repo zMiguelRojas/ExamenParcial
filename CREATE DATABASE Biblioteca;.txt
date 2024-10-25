@@ -1,0 +1,44 @@
+CREATE DATABASE Biblioteca;
+go
+-- Crear la base de datos Biblioteca
+CREATE DATABASE Biblioteca;
+GO
+
+-- Usar la base de datos Biblioteca
+USE Biblioteca;
+GO
+
+-- Crear la tabla autores
+CREATE TABLE autores (
+    id_autor INT IDENTITY(1,1) PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    nacionalidad VARCHAR(255) NOT NULL,
+    fecha_nacimiento DATE NOT NULL
+);
+GO
+
+-- Crear la tabla libros
+CREATE TABLE libros (
+    id_libro INT IDENTITY(1,1) PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    id_autor INT NOT NULL,
+    genero VARCHAR(255),
+    fecha_publicacion DATE NOT NULL,
+    isbn VARCHAR(20),
+    FOREIGN KEY (id_autor) REFERENCES autores(id_autor)
+);
+GO
+
+-- Crear la tabla prestamos
+CREATE TABLE prestamos (
+    id_prestamo INT IDENTITY(1,1) PRIMARY KEY,
+    id_libro INT NOT NULL,
+    fecha_prestamo DATE NOT NULL,
+    fecha_devolucion DATE NOT NULL,
+    FOREIGN KEY (id_libro) REFERENCES libros(id_libro)
+);
+GO
+
+Select * from Prestamos
+select * from Libros
+select * from Autores
